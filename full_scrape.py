@@ -1,15 +1,18 @@
 import twint as tw
 import logging 
-logging.basicConfig(filename= './all_0_logs.txt', level= logging.INFO)
+keyword = 'all_0_pre'
+logging.basicConfig(filename= f'./{keyword}_logs.txt', level= logging.INFO)
 
-tags = ['#NFTs', '#nfts','#NFT', '#nft', '#nftart', '#nftcollector', '#NFTCommunity', '#NFTGiveaway', '#Metaverse, #NFTs', '#Web3, #NFTs', '#NFTCollection', '#NFTGame',
-'#NFTdrop', '#NFTartists', '#NFTProject', '#NFTMarketplace', '#NFTdrops'] 
+tags = ['#NFTs', '#NFT', '#nftart', '#nftcollector', '#NFTCommunity', '#NFTGiveaway', '#Metaverse, #NFTs', '#Web3, #NFTs', '#NFTCollection', '#NFTGame',
+'#NFTdrop', '#NFTartists', '#NFTProject', '#NFTMarketplace', '#NFTdrops', '#NFTmint'] # '#nfts', '#nft',
+
+# tags = ['#NFTs']
 
 c = tw.Config()
-c.Since = ('2021-09-01')
+c.Since = ('2021-03-01')
 c.Until = ('2022-03-15')
 c.Min_likes = 0
-c.Verified = False
+c.Verified = True
 c.Lowercase = True
 c.Show_hashtags = False
 c.Email = False
@@ -50,8 +53,8 @@ def scrape_tweets(tags, config_var=c):
     total_tweets = 0
 
     for tag in tags:
-        scroll_id_path = f'./data/all_0/scroll_ids/{tag}_scroll_id.txt' 
-        csv_path = f'./data/all_0/tweets/{tag}.csv' 
+        scroll_id_path = f'./data/{keyword}/scroll_ids/{tag}_scroll_id.txt' 
+        csv_path = f'./data/{keyword}/tweets/{tag}.csv' 
 
         config_var.Search = tag
         config_var.Resume = scroll_id_path
