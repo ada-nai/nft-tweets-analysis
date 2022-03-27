@@ -8,6 +8,8 @@
 2) Data Collection and Processing
 3) Visualization
 4) Sentiment Analysis
+5) Closing Remarks
+6) References and Acknowledgements
 
 ## Overview
   NFTs are a relatively new concept and have been making headlines for the related events happening in the space. This project aims to capture the trend of NFTs by using available data and tries to answer a few questions that helps understand how far NFTs have come. 
@@ -30,7 +32,21 @@
 ## Sentiment Analysis 
   The set of tweets are available, but no sentiment labels are associated with each tweet that gives us a perception of the sentiment. This makes the problem an unsupervised learning problem.   
   
-  To obtain a sentiment score, the [vaderSentiment](https://github.com/cjhutto/vaderSentiment) package is used; which uses lists of predefned idioms and phrases to evaluate the sentiment of sentiment based on given context. Besides the keywords/idioms provided with the package, a number of idioms and lexicons were added to the code keeping NFTs in mind to provide more context to the program. The keywords included were heavily derived form Henrique Centieiro's excellent [article]((https://medium.datadriveninvestor.com/79-nft-crypto-words-you-need-to-know-the-crypto-nft-slang-dictionary-adcc39ad846b)) on Medium.
+  To obtain a sentiment score, the [vaderSentiment](https://github.com/cjhutto/vaderSentiment) package is used; which uses lists of predefned idioms and phrases to evaluate the sentiment of sentiment based on given context. Besides the keywords/idioms provided with the package, a number of idioms and lexicons were added to the code keeping NFTs in mind to provide more context to the program. The keywords included were heavily derived form Henrique Centieiro's excellent [article]((https://medium.datadriveninvestor.com/79-nft-crypto-words-you-need-to-know-the-crypto-nft-slang-dictionary-adcc39ad846b)) on Medium.  
+  
+  Again, for simplicity, tweets only in English language were used for understanding sentiment. The `sentiment.ipynb` file can be referred for implementation of the analysis of tweets. 
+  
+## Closing Remarks
+
+
+## References and Acknowledgements
+
+### References
+
+
+### Acknowledgements
+  
+  
   
   
 
