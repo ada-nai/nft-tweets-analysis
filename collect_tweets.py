@@ -1,31 +1,31 @@
 import twint as tw
 import logging 
-keyword = 'all_0_pre'
+keyword = 'verified_0_prepre'
 logging.basicConfig(filename= f'./{keyword}_logs.txt', level= logging.INFO)
 
-tags = ['#NFTs', '#NFT', '#nftart', '#nftcollector', '#NFTCommunity', '#NFTGiveaway', '#Metaverse, #NFTs', '#Web3, #NFTs', '#NFTCollection', '#NFTGame',
-'#NFTdrop', '#NFTartists', '#NFTProject', '#NFTMarketplace', '#NFTdrops', '#NFTmint'] # '#nfts', '#nft',
+tags = ['#NFTs', '#NFT', '#nftart', '#nftcollector', '#NFTCommunity',  '#Metaverse, #NFTs', '#Web3, #NFTs', '#NFTCollection', '#NFTGame',
+'#NFTdrop', '#NFTartists', '#NFTProject', '#NFTMarketplace', '#NFTdrops', '#NFTGiveaway', '#NFTmint'] # '#nfts', '#nft', 
 
-# tags = ['#NFTs']
+# tags = ['#Web3, #NFTs']
 
 c = tw.Config()
-c.Since = ('2021-03-01')
-c.Until = ('2022-03-15')
+c.Since = ('2020-10-01')
+c.Until = ('2021-02-28')
 c.Min_likes = 0
-c.Verified = True
 c.Lowercase = True
 c.Show_hashtags = False
 c.Email = False
 c.Phone = False
 c.Hide_output= True
 c.Store_csv = True
+c.Verified = True
 # c.Limit = 20
 # c.Location = False
 # c.Lang = 'en'
 
 
 
-def csv_num_records(filename):
+def csv_num_records(filename, tag):
     '''
     Get the number of tweets scraped
 
@@ -36,9 +36,14 @@ def csv_num_records(filename):
         num_records: str: Count of records in .csv file
 
     '''
-    with open(filename, 'r') as f:
-        num_records =sum(1 for line in f)
-        return num_records
+    try:
+        
+        with open(filename, 'r') as f:
+            num_records =sum(1 for line in f)
+            return num_records
+    except:
+        print(f'0 tweets collected for {tag}')
+        return 0
 
 def scrape_tweets(tags, config_var=c):
     '''
@@ -62,7 +67,7 @@ def scrape_tweets(tags, config_var=c):
 
         tw.run.Search(config_var)
 
-        tweet_count = csv_num_records(csv_path)
+        tweet_count = csv_num_records(csv_path, tag)
         total_tweets += tweet_count
         out = str(tweet_count)+' tweets collected for '+tag
         logging.info(out)
