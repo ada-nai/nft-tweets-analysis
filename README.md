@@ -9,7 +9,10 @@
 2) Data Collection  
 3) Data Aggregation and Processing  
 4) Visualization  
-
+5) Sentiment Analysis  
+6) Closing Remarks  
+7) References   
+8) Acknowledgements  
 
 ## File Structure of Submission
 The file structure with description is as follows:
@@ -75,4 +78,62 @@ Note: The time reference is Indian Standard Time(IST)
 - [`#nft`, `#nfts`, `#nftcommunity`] are the most used `hashtags` when users tweet about these digital entities and related platforms, opinions
 - In terms of `cashtags`, ArtPrice ($PRC) and ETH ($eth) are widely mentioned, with a number of others talked about, though at a smaller scale
 - Besides Twitter, the different `forums` used by NFT enthusiasts include Discord, OpenSea, YouTube, Demeure du Chaos among others
+
+## Sentiment Analysis 
+  The set of tweets are available, but no sentiment labels are associated with each tweet that gives us a perception of the sentiment. This makes the problem an unsupervised learning problem.   
+  
+  To obtain a sentiment score, the [vaderSentiment](https://github.com/cjhutto/vaderSentiment) package is used; which uses lists of predefned idioms and phrases to evaluate the sentiment of sentiment based on given context. Besides the keywords/idioms provided with the package, a number of idioms and lexicons were added to the code keeping NFTs in mind to provide more context to the program. The keywords included were heavily derived form Henrique Centieiro's excellent [article](https://medium.datadriveninvestor.com/79-nft-crypto-words-you-need-to-know-the-crypto-nft-slang-dictionary-adcc39ad846b) on Medium.  
+  
+  Again, for simplicity, tweets only in English language were used for understanding sentiment. The `sentiment.ipynb` file can be referred for implementation of the analysis of tweets. 
+  
+  The sentiment is evaluated based on the compound score of the tweets. The distribution of compound scores is shown below. 
+  
+  ![image](https://user-images.githubusercontent.com/51357266/160276166-1553278e-fd06-44f5-a9dd-e72bf5cc95f1.png)
+
+  
+  The sentiment (positive | neutral | negative) is decided based on the below mentioned threshold o compound score (`cs`):
+  ```
+  cs > 0.3  => positive
+  cs < -0.3 => negative
+  otherwise => neutral
+  ```
+  
+  The following result is obtained (proportion of sentiment labels of tweets):
+  ```
+  Sentiment Label distribution: 
+
+  positive    53.74%
+  neutral     37.68%
+  negative    8.56%
+  ```
+  Based on the given framework, we get the notion that most tweets associated with NFTs are positive, some are neutral, while relatively low number of tweets demonstrate negative/cautious sentiments towards NFT
+  
+## Closing Remarks
+  NFTs are getting more popular by the day. More people and platforms are present engaging with this unique concept. This report laid down the observations based on the data available. While, it cannot be considered 'exhaustive', the analysis does definitely give a brief perspective on the reactions towards NFTs and the way forward (which seems to be more engaging and active). 
+  
+  Further work could include getting more insights from the top used Forums as mentioned above and obtaining insights on specific NFTs and developing price action frameworks to "value" NFTs
+
+## References
+- Hutto, C.J. & Gilbert, E.E. (2014). VADER: A Parsimonious Rule-based Model for
+Sentiment Analysis of Social Media Text. Eighth International Conference on
+Weblogs and Social Media (ICWSM-14). Ann Arbor, MI, June 2014.
+
+## Acknowledgements
+I would like to thank the below mentioned members for their guidance/hints, without which this analysis report would have been relatively difficult to complete on time:
+- Team BitsCrunch (Vijay | Saravanan )
+- Team DPhi (Chanukya | Yash)
+- cef1911 (DPhi Discord)
+- woluxwolu (GitHub)
+- Project Twint
+- Project vaderSentiment
+- Team Udacity
+- The Tableau Community
+- mad_psyduck (CG)
+
+
+  
+  
+  
+
+  
 
